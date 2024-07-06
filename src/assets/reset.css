@@ -1,0 +1,84 @@
+/* Reset CSS */
+
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+
+/* Setting base line-height and removing text-decoration for links */
+body,
+button,
+input,
+select,
+textarea {
+  font-family: sans-serif;
+  line-height: 1.5;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Removing list styles for ordered and unordered lists */
+ol,
+ul {
+  list-style: none;
+}
+
+/* Removing default table border spacing */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Reset for quotes and blockquotes */
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+/* Reset for form elements */
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  font: inherit;
+}
+
+/* Reset for media elements */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* HTML5 hidden attribute reset */
+[hidden] {
+  display: none;
+}
