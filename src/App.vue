@@ -1,8 +1,10 @@
 <template>
   <the-header></the-header>
   <main>
-    <input-form></input-form>
-    <input-display></input-display>
+    <div class="input-container">
+      <input-form></input-form>
+      <input-display></input-display>
+    </div>
   </main>
 </template>
 
@@ -26,4 +28,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.input-container {
+  display: flex;
+}
+</style>

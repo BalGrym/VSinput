@@ -1,23 +1,23 @@
 <template>
   <div class="container">
     <div class="box-mouvement">
-      <img :src="upLeft" />
-      <img :src="up" />
-      <img :src="upRight" />
-      <img :src="left" />
-      <img :src="nutral" />
-      <img :src="right" />
-      <img :src="downLeft" />
-      <img :src="down" />
-      <img :src="downRight" />
+      <img :src="upLeft" @click="inputRegister" name="upLeft" />
+      <img :src="up" @click="inputRegister" name="up" />
+      <img :src="upRight" @click="inputRegister" name="upRight" />
+      <img :src="left" @click="inputRegister" name="left" />
+      <img :src="nutral" @click="inputRegister" name="nutral" />
+      <img :src="right" @click="inputRegister" name="right" />
+      <img :src="downLeft" @click="inputRegister" name="downLeft" />
+      <img :src="down" @click="inputRegister" name="down" />
+      <img :src="downRight" @click="inputRegister" name="downRight" />
     </div>
     <div class="box-attack">
-      <img :src="lp" />
-      <img :src="mp" />
-      <img :src="hp" />
-      <img :src="lk" />
-      <img :src="mk" />
-      <img :src="hk" />
+      <img :src="lp" @click="inputRegister" name="lp" />
+      <img :src="mp" @click="inputRegister" name="mp" />
+      <img :src="hp" @click="inputRegister" name="hp" />
+      <img :src="lk" @click="inputRegister" name="lk" />
+      <img :src="mk" @click="inputRegister" name="mk" />
+      <img :src="hk" @click="inputRegister" name="hk" />
     </div>
   </div>
 </template>
@@ -58,7 +58,15 @@ export default {
       lk,
       mk,
       hk,
+      input: [],
     };
+  },
+  methods: {
+    inputRegister(e) {
+      let value = e.currentTarget.getAttribute("name");
+      this.input.push(value);
+      console.log(this.input);
+    },
   },
 };
 </script>
@@ -89,6 +97,10 @@ export default {
   align-items: center;
   justify-items: center;
   width: 60%;
+}
+
+.box-attack > img {
+  padding: 0.5rem;
 }
 /* Utliser "filter" pour modifier l'image quand selectionné https://developer.mozilla.org/en-US/docs/Web/CSS/filter */
 </style>

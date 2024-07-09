@@ -1,12 +1,16 @@
 <template>
-  <p>Grande boite avec tout les inputs rentrés 1 à 1.</p>
+  <div class="container"></div>
 </template>
 
 <script></script>
 
 <style scoped>
-p {
-  max-width: 100%;
-  height: 300px;
+.container {
+  display: flex;
+  padding: 1rem;
+  margin: 2rem;
+  gap: 2rem;
+  width: 50%;
+  border: 1px solid #a39d9c;
 }
 </style>
