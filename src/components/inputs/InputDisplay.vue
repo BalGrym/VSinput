@@ -2,7 +2,21 @@
   <div class="container"></div>
 </template>
 
-<script></script>
+<script>
+import { images } from "@/assets/buttons/button";
+
+export default {
+  mounted() {
+    console.log(images);
+  },
+  data() {
+    return {
+      images,
+      inputTestDisplay: ["down", "downRight", "right", "lp"],
+    };
+  },
+};
+</script>
 
 <style scoped>
 .container {
