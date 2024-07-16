@@ -1,43 +1,37 @@
 <template>
   <div class="container">
     <div class="box-mouvement">
-      <img :src="images.upLeft" @click="inputRegister" name="upLeft" />
-      <img :src="images.up" @click="inputRegister" name="up" />
-      <img :src="images.upRight" @click="inputRegister" name="upRight" />
-      <img :src="images.left" @click="inputRegister" name="left" />
-      <img :src="images.nutral" @click="inputRegister" name="nutral" />
-      <img :src="images.right" @click="inputRegister" name="right" />
-      <img :src="images.downLeft" @click="inputRegister" name="downLeft" />
-      <img :src="images.down" @click="inputRegister" name="down" />
-      <img :src="images.downRight" @click="inputRegister" name="downRight" />
+      <img
+        v-for="image in imagesMouvement"
+        :src="image"
+        @click="inputRegister(image)"
+      />
     </div>
     <div class="box-attack">
-      <img :src="images.lp" @click="inputRegister" name="lp" />
-      <img :src="images.mp" @click="inputRegister" name="mp" />
-      <img :src="images.hp" @click="inputRegister" name="hp" />
-      <img :src="images.lk" @click="inputRegister" name="lk" />
-      <img :src="images.mk" @click="inputRegister" name="mk" />
-      <img :src="images.hk" @click="inputRegister" name="hk" />
+      <img
+        v-for="image in imagesAttack"
+        :src="image"
+        @click="inputRegister(image)"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import { images } from "@/assets/buttons/button.js";
+import { imagesMouvement } from "@/assets/buttons/button.js";
+import { imagesAttack } from "@/assets/buttons/button.js";
 
 export default {
   data() {
     return {
-      images,
-      // state managment pour passer la data input en temps réel ?
+      imagesMouvement,
+      imagesAttack,
       input: [],
     };
   },
   methods: {
-    inputRegister(e) {
-      let value = e.currentTarget.getAttribute("name");
-      this.input.push(value);
-      console.log(this.input);
+    inputRegister(image) {
+      this.$emit("input-selected", image);
     },
   },
 };
@@ -73,6 +67,34 @@ export default {
 
 .box-attack > img {
   padding: 0.5rem;
+}
+
+.box-mouvement img:nth-child(1) {
+  grid-area: 2 / 2 / 3 / 3;
+}
+.box-mouvement img:nth-child(2) {
+  grid-area: 2 / 3 / 3 / 4;
+}
+.box-mouvement img:nth-child(3) {
+  grid-area: 2 / 1 / 3 / 2;
+}
+.box-mouvement img:nth-child(4) {
+  grid-area: 1 / 2 / 2 / 3;
+}
+.box-mouvement img:nth-child(5) {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.box-mouvement img:nth-child(6) {
+  grid-area: 1 / 3 / 2 / 4;
+}
+.box-mouvement img:nth-child(7) {
+  grid-area: 3 / 2 / 4 / 3;
+}
+.box-mouvement img:nth-child(8) {
+  grid-area: 3 / 3 / 4 / 4;
+}
+.box-mouvement img:nth-child(9) {
+  grid-area: 3 / 1 / 4 / 2;
 }
 /* Utliser "filter" pour modifier l'image quand selectionné https://developer.mozilla.org/en-US/docs/Web/CSS/filter */
 </style>

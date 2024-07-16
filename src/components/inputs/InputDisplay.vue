@@ -1,19 +1,15 @@
 <template>
-  <div class="container"></div>
+  <div class="container">
+    <img v-for="image in selectedImages" :src="image" />
+  </div>
 </template>
 
 <script>
-import { images } from "@/assets/buttons/button";
-
 export default {
-  mounted() {
-    console.log(images);
-  },
-  data() {
-    return {
-      images,
-      inputTestDisplay: ["down", "downRight", "right", "lp"],
-    };
+  props: {
+    selectedImages: {
+      type: Array,
+    },
   },
 };
 </script>
@@ -21,10 +17,16 @@ export default {
 <style scoped>
 .container {
   display: flex;
+  flex-wrap: wrap;
   padding: 1rem;
   margin: 2rem;
-  gap: 2rem;
+  gap: 1rem;
   width: 50%;
   border: 1px solid #a39d9c;
+}
+
+img {
+  max-width: 50px;
+  height: 50px;
 }
 </style>

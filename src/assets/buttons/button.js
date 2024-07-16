@@ -15,7 +15,7 @@ import lk from "@/assets/buttons/attacks/icon_kick_l.png";
 import mk from "@/assets/buttons/attacks/icon_kick_m.png";
 import hk from "@/assets/buttons/attacks/icon_kick_h.png";
 
-export const images = {
+export const imagesMouvement = {
   nutral,
   right,
   left,
@@ -25,6 +25,9 @@ export const images = {
   down,
   downRight,
   downLeft,
+};
+
+export const imagesAttack = {
   lp,
   mp,
   hp,

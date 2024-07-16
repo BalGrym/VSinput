@@ -2,8 +2,8 @@
   <the-header></the-header>
   <main>
     <div class="input-container">
-      <input-form></input-form>
-      <input-display></input-display>
+      <input-form @input-selected="addSelectedImage"></input-form>
+      <input-display :selectedImages="selectedImages"></input-display>
     </div>
   </main>
 </template>
@@ -23,7 +23,14 @@ export default {
   data() {
     return {
       title: "[VS]input",
+      selectedImages: [],
     };
+  },
+  methods: {
+    addSelectedImage(image) {
+      console.log(this.selectedImages);
+      this.selectedImages.push(image);
+    },
   },
 };
 </script>
