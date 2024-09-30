@@ -2,16 +2,18 @@
   <div class="container">
     <div class="box-mouvement">
       <img
-        v-for="image in imagesMouvement"
-        :src="image"
-        @click="inputRegister(image)"
+        v-for="(image, key) in imagesMouvement"
+        :key="key"
+        :src="image.path"
+        @click="inputRegister(image.name)"
       />
     </div>
     <div class="box-attack">
       <img
-        v-for="image in imagesAttack"
-        :src="image"
-        @click="inputRegister(image)"
+        v-for="(image, key) in imagesAttack"
+        :key="key"
+        :src="image.path"
+        @click="inputRegister(image.name)"
       />
     </div>
   </div>
@@ -22,6 +24,9 @@ import { imagesMouvement } from "@/assets/buttons/button.js";
 import { imagesAttack } from "@/assets/buttons/button.js";
 
 export default {
+  mounted() {
+    console.log(imagesMouvement);
+  },
   data() {
     return {
       imagesMouvement,
@@ -30,8 +35,8 @@ export default {
     };
   },
   methods: {
-    inputRegister(image) {
-      this.$emit("input-selected", image);
+    inputRegister(imageName) {
+      this.$emit("input-selected", imageName);
     },
   },
 };

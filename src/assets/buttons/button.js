@@ -16,22 +16,22 @@ import mk from "@/assets/buttons/attacks/icon_kick_m.png";
 import hk from "@/assets/buttons/attacks/icon_kick_h.png";
 
 export const imagesMouvement = {
-  nutral,
-  right,
-  left,
-  up,
-  upLeft,
-  upRight,
-  down,
-  downRight,
-  downLeft,
+  nutral: { name: "nutral", path: nutral },
+  right: { name: "right", path: right },
+  left: { name: "left", path: left },
+  up: { name: "up", path: up },
+  upLeft: { name: "upLeft", path: upLeft },
+  upRight: { name: "upRight", path: upRight },
+  down: { name: "down", path: down },
+  downRight: { name: "downRight", path: downRight },
+  downLeft: { name: "downLeft", path: downLeft },
 };
 
 export const imagesAttack = {
-  lp,
-  mp,
-  hp,
-  lk,
-  mk,
-  hk,
+  lp: { name: "lp", path: lp },
+  mp: { name: "mp", path: mp },
+  hp: { name: "hp", path: hp },
+  lk: { name: "lk", path: lk },
+  mk: { name: "mk", path: mk },
+  hk: { name: "hk", path: hk },
 };

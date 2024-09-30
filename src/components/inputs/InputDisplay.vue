@@ -1,14 +1,33 @@
 <template>
   <div class="container">
-    <img v-for="image in selectedImages" :src="image" />
+    <img
+      v-for="(imageName, index) in selectedImageNames"
+      :key="index"
+      :src="getImagePath(imageName)"
+      @click="removeImage(index)"
+    />
   </div>
 </template>
 
 <script>
+import { imagesMouvement, imagesAttack } from "@/assets/buttons/button";
+
 export default {
   props: {
-    selectedImages: {
+    selectedImageNames: {
       type: Array,
+      required: true,
+    },
+  },
+  methods: {
+    getImagePath(imageName) {
+      return (
+        imagesMouvement[imageName]?.path || imagesAttack[imageName]?.path || ""
+      );
+    },
+    removeImage(index) {
+      console.log(index);
+      this.selectedImageNames.splice(index, 1);
     },
   },
 };
