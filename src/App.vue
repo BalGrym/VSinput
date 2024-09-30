@@ -5,7 +5,7 @@
       <input-form @input-selected="addSelectedImage"></input-form>
       <input-display :selectedImageNames="selectedImages"></input-display>
     </div>
-    <button class="buttonSave">Save</button>
+    <button-save @click="saveCombo"></button-save>
     <combo-saved></combo-saved>
   </main>
 </template>
@@ -14,6 +14,7 @@
 import TheHeader from "./components/layout/TheHeader.vue";
 import InputForm from "./components/inputs/InputForm.vue";
 import InputDisplay from "./components/inputs/InputDisplay.vue";
+import ButtonSave from "./components/inputs/ButtonSave.vue";
 import ComboSaved from "./components/inputs/ComboSaved.vue";
 
 export default {
@@ -22,6 +23,7 @@ export default {
     InputDisplay,
     InputForm,
     ComboSaved,
+    ButtonSave,
   },
 
   data() {
@@ -34,6 +36,9 @@ export default {
     addSelectedImage(imageName) {
       console.log(this.selectedImages);
       this.selectedImages.push(imageName);
+    },
+    saveCombo() {
+      console.log(this.selectedImages);
     },
   },
 };

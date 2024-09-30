@@ -1,14 +1,14 @@
 [
   {
     "id": 0,
-    "inputs": "...1"
+    "inputs": ["hp", "down", "downLeft", "left", "lp"]
   },
   {
     "id": 1,
-    "inputs": "...2"
+    "inputs": ["down", "downLeft", "left", "down", "downLeft", "left", "lp"]
   },
   {
     "id": 2,
-    "inputs": "...3"
+    "inputs": ["left", "right", "hp"]
   }
 ]
