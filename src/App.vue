@@ -17,6 +17,8 @@ import InputDisplay from "./components/inputs/InputDisplay.vue";
 import ButtonSave from "./components/inputs/ButtonSave.vue";
 import ComboSaved from "./components/inputs/ComboSaved.vue";
 
+import axios from "axios";
+
 export default {
   components: {
     TheHeader,
@@ -38,7 +40,16 @@ export default {
       this.selectedImages.push(imageName);
     },
     saveCombo() {
-      console.log(this.selectedImages);
+      axios
+        .post("http://localhost:3000/api/combos", {
+          inputs: this.selectedImages,
+        })
+        .then(() => {
+          console.log("Combo Créé");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
