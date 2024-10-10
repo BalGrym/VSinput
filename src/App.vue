@@ -1,12 +1,17 @@
 <template>
   <the-header></the-header>
   <main>
+    <characters></characters>
     <div class="input-container">
       <input-form @input-selected="addSelectedImage"></input-form>
       <input-display :selectedImageNames="selectedImages"></input-display>
     </div>
-    <button-save @click="saveCombo"></button-save>
-    <combo-saved></combo-saved>
+    <button-save
+      :selected-images="selectedImages"
+      @combo-saved="refreshCombos"
+      @reset-selected-images="resetSelectedImages"
+    ></button-save>
+    <combo-saved ref="refreshGetCombos"></combo-saved>
   </main>
 </template>
 
@@ -16,8 +21,7 @@ import InputForm from "./components/inputs/InputForm.vue";
 import InputDisplay from "./components/inputs/InputDisplay.vue";
 import ButtonSave from "./components/inputs/ButtonSave.vue";
 import ComboSaved from "./components/inputs/ComboSaved.vue";
-
-import axios from "axios";
+import Characters from "./components/inputs/Characters.vue";
 
 export default {
   components: {
@@ -26,6 +30,7 @@ export default {
     InputForm,
     ComboSaved,
     ButtonSave,
+    Characters,
   },
 
   data() {
@@ -39,17 +44,11 @@ export default {
       console.log(this.selectedImages);
       this.selectedImages.push(imageName);
     },
-    saveCombo() {
-      axios
-        .post("http://localhost:3000/api/combos", {
-          inputs: this.selectedImages,
-        })
-        .then(() => {
-          console.log("Combo Créé");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    refreshCombos() {
+      this.$refs.refreshGetCombos.getCombos();
+    },
+    resetSelectedImages() {
+      this.selectedImages = [];
     },
   },
 };
