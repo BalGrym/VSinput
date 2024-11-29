@@ -6,6 +6,7 @@
         v-for="characterName in characterKeys"
         :key="characterName"
         :src="getImagePath(characterName)"
+        @click="getCharacterName(characterName)"
         :alt="characterName"
       />
     </div>
@@ -14,11 +15,13 @@
 
 <script>
 import { imagesCharacters } from "@/assets/characters/characters";
+import { selectedCharacterStore } from "@/stores/characterStore";
 
 export default {
   data() {
     return {
       imagesCharacters,
+      selectedCharacter: "",
     };
   },
   computed: {
@@ -29,6 +32,11 @@ export default {
   methods: {
     getImagePath(characterName) {
       return this.imagesCharacters[characterName]?.path || "";
+    },
+    getCharacterName(characterName) {
+      const characterStore = selectedCharacterStore();
+      characterStore.setSelectedCharacter(characterName);
+      console.log(characterName);
     },
   },
 };

@@ -8,7 +8,10 @@
           alt="input"
         />
       </div>
-      <button class="btn-suppr" @click="deleteCombo(combo._id)">
+      <button
+        class="btn-suppr"
+        @click="deleteCombo(combo._id, this.characterName)"
+      >
         Supprimer
       </button>
     </div>
@@ -17,16 +20,26 @@
 
 <script>
 import { imagesMouvement, imagesAttack } from "@/assets/buttons/button";
+import { selectedCharacterStore } from "@/stores/characterStore";
 import axios from "axios";
 
 export default {
   data() {
     return {
+      characterName: "",
       combosSaved: {},
     };
   },
-  created() {
-    this.getCombos();
+  computed: {
+    selectedCharacter() {
+      return selectedCharacterStore().selectedCharacter;
+    },
+  },
+  watch: {
+    selectedCharacter(newCharacter) {
+      this.characterName = newCharacter;
+      this.getCombos(newCharacter);
+    },
   },
   methods: {
     getImagePath(input) {
@@ -34,20 +47,20 @@ export default {
     },
     deleteCombo(id) {
       axios
-        .delete(`http://localhost:3000/api/combos/${id}`)
+        .delete(`http://localhost:3000/api/combos/${this.characterName}/${id}`)
         .then(() => {
-          this.getCombos();
+          this.getCombos(this.characterName);
           console.log(`Combo avec l'id ${id} a été supprimé.`);
         })
         .catch((error) => {
           console.log(error);
         });
     },
-    getCombos() {
+    getCombos(newCharacter) {
       axios
-        .get("http://localhost:3000/api/combos")
+        .get(`http://localhost:3000/api/combos/${newCharacter}`)
         .then((comboData) => {
-          this.combosSaved = comboData.data;
+          this.combosSaved = comboData.data.combos;
         })
         .catch((error) => {
           console.log(error);
@@ -73,6 +86,7 @@ export default {
 
 .combo-list {
   display: flex;
+  flex-wrap: wrap;
 }
 
 img {

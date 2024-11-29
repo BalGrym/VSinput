@@ -44,8 +44,8 @@ export default {
       console.log(this.selectedImages);
       this.selectedImages.push(imageName);
     },
-    refreshCombos() {
-      this.$refs.refreshGetCombos.getCombos();
+    refreshCombos(selectedCharacter) {
+      this.$refs.refreshGetCombos.getCombos(selectedCharacter);
     },
     resetSelectedImages() {
       this.selectedImages = [];
