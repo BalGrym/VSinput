@@ -4,7 +4,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -71,12 +71,12 @@ textarea {
 }
 
 /* Reset for media elements */
-img,
+/* img,
 video {
   max-width: 100%;
   height: auto;
   display: block;
-}
+} */
 
 /* HTML5 hidden attribute reset */
 [hidden] {

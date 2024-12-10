@@ -38,7 +38,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   padding: 1rem;
-  margin: 2rem;
   gap: 1rem;
   width: 50%;
   border: 1px solid #a39d9c;
@@ -47,5 +46,19 @@ export default {
 img {
   max-width: 50px;
   height: 50px;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    width: auto;
+    gap: 1rem;
+    min-height: 100px;
+    height: auto;
+    border: 1px solid #a39d9c;
+  }
 }
 </style>

@@ -46,9 +46,9 @@ export default {
 .container {
   display: flex;
   padding: 1rem;
-  margin: 2rem;
   gap: 2rem;
-  width: 50%;
+  width: fit-content;
+  height: 150px;
   border: 1px solid #a39d9c;
 }
 
@@ -58,7 +58,7 @@ export default {
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 3px;
   grid-row-gap: 3px;
-  width: 40%;
+  width: fit-content;
 }
 
 .box-attack {
@@ -67,7 +67,13 @@ export default {
   grid-template-rows: repeat(2, 1fr);
   align-items: center;
   justify-items: center;
-  width: 60%;
+  width: fit-content;
+}
+
+img {
+  max-width: 50px;
+  height: 50px;
+  cursor: pointer;
 }
 
 .box-attack > img {

@@ -3,10 +3,11 @@
     <h1>Characters</h1>
     <div class="characters-list">
       <img
-        v-for="characterName in characterKeys"
+        v-for="(characterName, index) in characterKeys"
         :key="characterName"
         :src="getImagePath(characterName)"
-        @click="getCharacterName(characterName)"
+        @click="activeCharacter(characterName, index)"
+        :class="{ 'active-class': selectedCharacter === index }"
         :alt="characterName"
       />
     </div>
@@ -33,7 +34,8 @@ export default {
     getImagePath(characterName) {
       return this.imagesCharacters[characterName]?.path || "";
     },
-    getCharacterName(characterName) {
+    activeCharacter(characterName, index) {
+      this.selectedCharacter = index;
       const characterStore = selectedCharacterStore();
       characterStore.setSelectedCharacter(characterName);
       console.log(characterName);
@@ -58,5 +60,10 @@ export default {
 img {
   border-radius: 50%;
   border: 2px solid #a39d9c;
+  cursor: pointer;
+}
+
+.active-class {
+  border: 2px solid #eeff00 !important;
 }
 </style>
