@@ -29,9 +29,12 @@ export default {
       console.log(this.selectedCharacter);
 
       axios
-        .post(`http://localhost:3000/api/combos/${selectedCharacter}`, {
-          inputs: this.selectedImages,
-        })
+        .post(
+          `https://vsinput-backend.onrender.com/api/combos/${selectedCharacter}`,
+          {
+            inputs: this.selectedImages,
+          }
+        )
         .then(() => {
           console.log(this.selectedImages);
           this.$emit("reset-selected-images");

@@ -47,7 +47,9 @@ export default {
     },
     deleteCombo(id) {
       axios
-        .delete(`http://localhost:3000/api/combos/${this.characterName}/${id}`)
+        .delete(
+          `https://vsinput-backend.onrender.com/api/combos/${this.characterName}/${id}`
+        )
         .then(() => {
           this.getCombos(this.characterName);
           console.log(`Combo avec l'id ${id} a été supprimé.`);
@@ -58,7 +60,7 @@ export default {
     },
     getCombos(newCharacter) {
       axios
-        .get(`http://localhost:3000/api/combos/${newCharacter}`)
+        .get(`https://vsinput-backend.onrender.com/api/combos/${newCharacter}`)
         .then((comboData) => {
           this.combosSaved = comboData.data.combos;
         })
