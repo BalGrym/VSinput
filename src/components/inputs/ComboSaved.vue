@@ -48,7 +48,9 @@ export default {
     deleteCombo(id) {
       axios
         .delete(
-          `https://vsinput-backend.onrender.com/api/combos/${this.characterName}/${id}`
+          `${import.meta.env.VITE_API_URL}/api/combos/${
+            this.characterName
+          }/${id}`
         )
         .then(() => {
           this.getCombos(this.characterName);
@@ -60,7 +62,7 @@ export default {
     },
     getCombos(newCharacter) {
       axios
-        .get(`https://vsinput-backend.onrender.com/api/combos/${newCharacter}`)
+        .get(`${import.meta.env.VITE_API_URL}/api/combos/${newCharacter}`)
         .then((comboData) => {
           this.combosSaved = comboData.data.combos;
         })

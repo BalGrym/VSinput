@@ -30,7 +30,7 @@ export default {
 
       axios
         .post(
-          `https://vsinput-backend.onrender.com/api/combos/${selectedCharacter}`,
+          `${import.meta.env.VITE_API_URL}/api/combos/${selectedCharacter}`,
           {
             inputs: this.selectedImages,
           }
