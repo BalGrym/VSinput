@@ -1,5 +1,11 @@
 <template>
-  <button class="buttonSave" @click="saveCombo">Save</button>
+  <button
+    class="buttonSave"
+    @click="saveCombo"
+    :disabled="selectedImages.length < 1"
+  >
+    Save
+  </button>
 </template>
 
 <script>
@@ -47,3 +53,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+button:disabled {
+  cursor: not-allowed;
+}
+</style>

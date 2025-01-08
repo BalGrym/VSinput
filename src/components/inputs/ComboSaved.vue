@@ -81,8 +81,7 @@ export default {
           "Le serveur peut être en veille, ou surcharger, veuillez patienter... ";
       }, 2000);
       axios
-        // .get(`${import.meta.env.VITE_API_URL}/api/combos/${newCharacter}`)
-        .get(`https://vsinput-backend.onrender.com/api/combos/${newCharacter}`)
+        .get(`${import.meta.env.VITE_API_URL}/api/combos/${newCharacter}`)
         .then((comboData) => {
           console.log("Réponse reçue du serveur");
           clearTimeout(timeout);
