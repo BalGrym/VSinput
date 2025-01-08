@@ -3,6 +3,12 @@
     <div v-if="loadingMessage" class="loading-message">
       <p>{{ loadingMessage }}</p>
     </div>
+    <div v-if="combosSaved.length < 1" class="empty-combo-message">
+      <p>
+        Ce personnage ne dispose pas de combo. Soyez le premier à en partager un
+        !
+      </p>
+    </div>
     <div class="combo" v-for="combo in combosSaved" :key="combo._id">
       <div class="combo-list">
         <img
@@ -66,18 +72,26 @@ export default {
     },
     getCombos(newCharacter) {
       this.loadingMessage = null;
+      console.log("test");
+
       const timeout = setTimeout(() => {
+        console.log("set timeout + msg");
+
         this.loadingMessage =
           "Le serveur peut être en veille, ou surcharger, veuillez patienter... ";
       }, 2000);
       axios
-        .get(`${import.meta.env.VITE_API_URL}/api/combos/${newCharacter}`)
+        // .get(`${import.meta.env.VITE_API_URL}/api/combos/${newCharacter}`)
+        .get(`https://vsinput-backend.onrender.com/api/combos/${newCharacter}`)
         .then((comboData) => {
+          console.log("Réponse reçue du serveur");
           clearTimeout(timeout);
           this.loadingMessage = null;
           this.combosSaved = comboData.data.combos;
+          console.log(this.combosSaved);
         })
         .catch((error) => {
+          console.log("Erreur reçue du serveur");
           clearTimeout(timeout);
           this.loadingMessage = null;
           console.log(error);
@@ -100,6 +114,11 @@ export default {
   padding: 10px;
   border-radius: 10px;
 }
+.empty-combo-message > p {
+  border: 1px solid #a39d9c;
+  padding: 10px;
+}
+
 .combo {
   display: flex;
   flex-direction: column;
