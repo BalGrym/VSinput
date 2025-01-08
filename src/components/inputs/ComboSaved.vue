@@ -1,5 +1,8 @@
 <template>
   <div class="combos-container">
+    <div v-if="loadingMessage" class="loading-message">
+      <p>{{ loadingMessage }}</p>
+    </div>
     <div class="combo" v-for="combo in combosSaved" :key="combo._id">
       <div class="combo-list">
         <img
@@ -28,6 +31,7 @@ export default {
     return {
       characterName: "",
       combosSaved: {},
+      loadingMessage: null,
     };
   },
   computed: {
@@ -61,12 +65,21 @@ export default {
         });
     },
     getCombos(newCharacter) {
+      this.loadingMessage = null;
+      const timeout = setTimeout(() => {
+        this.loadingMessage =
+          "Le serveur peut être en veille, ou surcharger, veuillez patienter... ";
+      }, 2000);
       axios
         .get(`${import.meta.env.VITE_API_URL}/api/combos/${newCharacter}`)
         .then((comboData) => {
+          clearTimeout(timeout);
+          this.loadingMessage = null;
           this.combosSaved = comboData.data.combos;
         })
         .catch((error) => {
+          clearTimeout(timeout);
+          this.loadingMessage = null;
           console.log(error);
         });
     },
@@ -79,6 +92,13 @@ export default {
   display: grid;
   margin: 32px;
   gap: 10px;
+}
+
+.loading-message > p {
+  background-color: rgb(241, 80, 80);
+  border: 1px solid #a39d9c;
+  padding: 10px;
+  border-radius: 10px;
 }
 .combo {
   display: flex;
