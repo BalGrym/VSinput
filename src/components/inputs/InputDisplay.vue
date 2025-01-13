@@ -39,7 +39,7 @@ export default {
   flex-wrap: wrap;
   padding: 1rem;
   gap: 1rem;
-  width: 50%;
+  width: 100%;
   border: 1px solid #a39d9c;
 }
 

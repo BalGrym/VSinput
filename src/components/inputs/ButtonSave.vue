@@ -2,7 +2,7 @@
   <button
     class="buttonSave"
     @click="saveCombo"
-    :disabled="selectedImages.length < 1"
+    :disabled="selectedImages.length < 1 || description.length > 500"
   >
     Save
   </button>
@@ -19,6 +19,10 @@ export default {
     };
   },
   props: {
+    description: {
+      type: String,
+      required: true,
+    },
     selectedImages: {
       type: Array,
     },
@@ -32,6 +36,7 @@ export default {
     saveCombo() {
       const characterStore = selectedCharacterStore();
       const selectedCharacter = characterStore.selectedCharacter;
+
       console.log(this.selectedCharacter);
 
       axios
@@ -39,6 +44,7 @@ export default {
           `${import.meta.env.VITE_API_URL}/api/combos/${selectedCharacter}`,
           {
             inputs: this.selectedImages,
+            description: this.description,
           }
         )
         .then(() => {

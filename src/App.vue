@@ -2,19 +2,20 @@
   <the-header></the-header>
   <main>
     <characters></characters>
-    <div
-      class="input-container"
-      :class="{ 'hide-class': character.selectedCharacter === null }"
-    >
-      <input-form @input-selected="addSelectedImage"></input-form>
-      <input-display :selectedImageNames="selectedImages"></input-display>
+    <div :class="{ 'hide-class': character.selectedCharacter === null }">
+      <div class="input-container">
+        <input-form @input-selected="addSelectedImage"></input-form>
+        <input-display :selectedImageNames="selectedImages"></input-display>
+      </div>
+      <input-description @get-description="getDescription"></input-description>
+      <button-save
+        :selected-images="selectedImages"
+        :description="description"
+        @combo-saved="refreshCombos"
+        @reset-selected-images="resetSelectedImages"
+      ></button-save>
     </div>
-    <button-save
-      :selected-images="selectedImages"
-      @combo-saved="refreshCombos"
-      @reset-selected-images="resetSelectedImages"
-      :class="{ 'hide-class': character.selectedCharacter === null }"
-    ></button-save>
+
     <combo-saved ref="refreshGetCombos"></combo-saved>
   </main>
 </template>
@@ -23,6 +24,7 @@
 import TheHeader from "./components/layout/TheHeader.vue";
 import InputForm from "./components/inputs/InputForm.vue";
 import InputDisplay from "./components/inputs/InputDisplay.vue";
+import InputDescription from "./components/inputs/InputDescription.vue";
 import ButtonSave from "./components/inputs/ButtonSave.vue";
 import ComboSaved from "./components/inputs/ComboSaved.vue";
 import Characters from "./components/inputs/Characters.vue";
@@ -36,16 +38,21 @@ export default {
     ComboSaved,
     ButtonSave,
     Characters,
+    InputDescription,
   },
 
   data() {
     return {
       title: "[VS]input",
       selectedImages: [],
+      description: "",
       character: selectedCharacterStore(),
     };
   },
   methods: {
+    getDescription(description) {
+      this.description = description;
+    },
     addSelectedImage(imageName) {
       console.log(this.selectedImages);
       this.selectedImages.push(imageName);

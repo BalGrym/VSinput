@@ -10,12 +10,17 @@
       </p>
     </div>
     <div class="combo" v-for="combo in combosSaved" :key="combo._id">
-      <div class="combo-list">
-        <img
-          v-for="input in combo.inputs"
-          :src="getImagePath(input)"
-          alt="input"
-        />
+      <div>
+        <div class="combo-list">
+          <img
+            v-for="input in combo.inputs"
+            :src="getImagePath(input)"
+            alt="input"
+          />
+        </div>
+        <p class="description" v-if="combo.description">
+          {{ combo.description }}
+        </p>
       </div>
       <button
         class="btn-suppr"
@@ -72,25 +77,18 @@ export default {
     },
     getCombos(newCharacter) {
       this.loadingMessage = null;
-      console.log("test");
-
       const timeout = setTimeout(() => {
-        console.log("set timeout + msg");
-
         this.loadingMessage =
-          "Le serveur peut être en veille, ou surcharger, veuillez patienter... ";
+          "Le serveur peut être en veille, cela peut prendre une petite minute, veuillez patienter... ";
       }, 2000);
       axios
         .get(`${import.meta.env.VITE_API_URL}/api/combos/${newCharacter}`)
         .then((comboData) => {
-          console.log("Réponse reçue du serveur");
           clearTimeout(timeout);
           this.loadingMessage = null;
           this.combosSaved = comboData.data.combos;
-          console.log(this.combosSaved);
         })
         .catch((error) => {
-          console.log("Erreur reçue du serveur");
           clearTimeout(timeout);
           this.loadingMessage = null;
           console.log(error);
@@ -143,5 +141,11 @@ img {
   border: none;
   width: 100px;
   padding: 8px;
+}
+
+.description {
+  padding: 8px;
+  background-color: #414a68;
+  margin-top: 8px;
 }
 </style>
