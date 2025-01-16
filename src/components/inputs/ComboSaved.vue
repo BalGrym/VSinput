@@ -33,7 +33,11 @@
 </template>
 
 <script>
-import { imagesMouvement, imagesAttack } from "@/assets/buttons/button";
+import {
+  imagesMouvement,
+  imagesAttack,
+  imagesSpecial,
+} from "@/assets/buttons/button";
 import { selectedCharacterStore } from "@/stores/characterStore";
 import axios from "axios";
 
@@ -58,7 +62,12 @@ export default {
   },
   methods: {
     getImagePath(input) {
-      return imagesMouvement[input]?.path || imagesAttack[input]?.path || "";
+      return (
+        imagesMouvement[input]?.path ||
+        imagesAttack[input]?.path ||
+        imagesSpecial[input]?.path ||
+        ""
+      );
     },
     deleteCombo(id) {
       axios

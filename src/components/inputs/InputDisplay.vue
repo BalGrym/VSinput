@@ -10,7 +10,11 @@
 </template>
 
 <script>
-import { imagesMouvement, imagesAttack } from "@/assets/buttons/button";
+import {
+  imagesMouvement,
+  imagesAttack,
+  imagesSpecial,
+} from "@/assets/buttons/button";
 
 export default {
   props: {
@@ -22,7 +26,10 @@ export default {
   methods: {
     getImagePath(imageName) {
       return (
-        imagesMouvement[imageName]?.path || imagesAttack[imageName]?.path || ""
+        imagesMouvement[imageName]?.path ||
+        imagesAttack[imageName]?.path ||
+        imagesSpecial[imageName]?.path ||
+        ""
       );
     },
     removeImage(index) {

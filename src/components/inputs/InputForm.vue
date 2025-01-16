@@ -1,18 +1,28 @@
 <template>
   <div class="container">
-    <div class="box-mouvement">
-      <img
-        v-for="(image, key) in imagesMouvement"
-        :key="key"
-        :src="image.path"
-        @click="inputRegister(image.name)"
-      />
+    <div class="box-one">
+      <div class="box-mouvement">
+        <img
+          v-for="(image, key) in imagesMouvement"
+          :key="key"
+          :src="image.path"
+          @click="inputRegister(image.name)"
+        />
+      </div>
+      <div class="box-attack">
+        <img
+          v-for="(image, key) in imagesAttack"
+          :key="key"
+          :src="image.path"
+          @click="inputRegister(image.name)"
+        />
+      </div>
     </div>
-    <div class="box-attack">
+    <div class="box-special">
       <img
-        v-for="(image, key) in imagesAttack"
-        :key="key"
+        v-for="(image, key) in imagesSpecial"
         :src="image.path"
+        :alt="image.name"
         @click="inputRegister(image.name)"
       />
     </div>
@@ -20,8 +30,11 @@
 </template>
 
 <script>
-import { imagesMouvement } from "@/assets/buttons/button.js";
-import { imagesAttack } from "@/assets/buttons/button.js";
+import {
+  imagesMouvement,
+  imagesAttack,
+  imagesSpecial,
+} from "@/assets/buttons/button.js";
 
 export default {
   mounted() {
@@ -31,6 +44,7 @@ export default {
     return {
       imagesMouvement,
       imagesAttack,
+      imagesSpecial,
       input: [],
     };
   },
@@ -45,11 +59,15 @@ export default {
 <style scoped>
 .container {
   display: flex;
+  flex-direction: column;
   padding: 1rem;
   gap: 2rem;
   width: fit-content;
-  height: 150px;
   border: 1px solid #a39d9c;
+}
+
+.box-one {
+  display: flex;
 }
 
 .box-mouvement {
@@ -63,8 +81,16 @@ export default {
 
 .box-attack {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
+  width: fit-content;
+}
+.box-special {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   align-items: center;
   justify-items: center;
   width: fit-content;
