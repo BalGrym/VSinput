@@ -21,6 +21,7 @@
     <div class="box-special">
       <img
         v-for="(image, key) in imagesSpecial"
+        :key="key"
         :src="image.path"
         :alt="image.name"
         @click="inputRegister(image.name)"

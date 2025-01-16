@@ -48,28 +48,28 @@ export const imagesMouvement = {
 };
 
 export const imagesAttack = {
-  p: { name: "p", path: p },
   lp: { name: "lp", path: lp },
   mp: { name: "mp", path: mp },
   hp: { name: "hp", path: hp },
-  k: { name: "k", path: k },
+  p: { name: "p", path: p },
+  di: { name: "di", path: di },
   lk: { name: "lk", path: lk },
   mk: { name: "mk", path: mk },
   hk: { name: "hk", path: hk },
-  di: { name: "di", path: di },
+  k: { name: "k", path: k },
   dr: { name: "dr", path: dr },
 };
 
 export const imagesSpecial = {
-  p28: { name: "p28", path: p28 },
-  p46: { name: "p46", path: p46 },
   p214: { name: "p214", path: p214 },
   p236: { name: "p236", path: p236 },
-  p360: { name: "p360", path: p360 },
   p623: { name: "p623", path: p623 },
+  p28: { name: "p28", path: p28 },
+  p46: { name: "p46", path: p46 },
   p63214: { name: "p63214", path: p63214 },
-  counterHit: { name: "counterHit", path: counterHit },
+  p360: { name: "p360", path: p360 },
   hold: { name: "hold", path: hold },
+  counterHit: { name: "counterHit", path: counterHit },
   punishCounter: { name: "punishCounter", path: punishCounter },
   separation: { name: "separation", path: separation },
   super1: { name: "super1", path: super1 },
